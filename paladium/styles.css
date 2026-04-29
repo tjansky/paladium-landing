@@ -154,24 +154,22 @@ a:hover {
   flex-shrink: 0;
 }
 
-.logo-primary {
+.logo-primary,
+.logo-secondary {
   font-family: var(--font-sans);
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-white);
   line-height: 1;
 }
 
-.logo-secondary {
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  font-weight: 300;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.logo-primary {
   color: var(--color-accent);
-  line-height: 1;
+}
+
+.logo-secondary {
+  color: var(--color-white);
 }
 
 /* ── Desktop nav ── */
