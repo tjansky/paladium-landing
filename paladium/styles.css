@@ -20,6 +20,8 @@
   --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.5);
   --header-h: 72px;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --btn-ease: cubic-bezier(0.33, 1, 0.68, 1);
+  --btn-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px rgba(201, 169, 110, 0.55);
 }
 
 *,
@@ -287,54 +289,148 @@ a:hover {
 
 /* ── Buttons ── */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 22px;
   font-family: inherit;
   font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition),
-    border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.38s var(--btn-ease),
+    color 0.38s var(--btn-ease),
+    border-color 0.38s var(--btn-ease),
+    transform 0.28s var(--btn-ease),
+    box-shadow 0.38s var(--btn-ease);
+}
+
+.btn:focus-visible {
+  outline: none;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary:focus-visible {
+  box-shadow:
+    var(--btn-ring),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(20, 16, 8, 0.18),
+    0 4px 22px rgba(201, 169, 110, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+.btn-ghost:focus-visible {
+  box-shadow: var(--btn-ring);
+  border-color: rgba(201, 169, 110, 0.45);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #a8854e 100%);
-  color: #18120a;
-  box-shadow: 0 4px 24px rgba(201, 169, 110, 0.2);
+  color: #141109;
+  background: linear-gradient(
+    165deg,
+    #e4c992 0%,
+    var(--color-accent) 38%,
+    #9f7d43 108%
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(20, 16, 8, 0.18),
+    0 4px 22px rgba(201, 169, 110, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
-  color: #18120a;
-  box-shadow: 0 6px 32px rgba(201, 169, 110, 0.32);
+  background: linear-gradient(
+    165deg,
+    #f0dfb0 0%,
+    var(--color-accent-hover) 42%,
+    var(--color-accent) 100%
+  );
+  color: #141109;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(20, 16, 8, 0.12),
+    0 8px 32px rgba(201, 169, 110, 0.36),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:focus-visible:hover {
+  box-shadow:
+    var(--btn-ring),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(20, 16, 8, 0.12),
+    0 8px 32px rgba(201, 169, 110, 0.36),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-ghost:focus-visible:hover {
+  box-shadow:
+    var(--btn-ring),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 6px 24px rgba(0, 0, 0, 0.2);
 }
 
 .btn-ghost {
-  background: transparent;
+  font-weight: 500;
   color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.028);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .btn-ghost:hover {
-  border-color: rgba(201, 169, 110, 0.4);
-  background: var(--color-accent-soft);
+  border-color: rgba(201, 169, 110, 0.45);
+  background: radial-gradient(
+    120% 180% at 50% -20%,
+    rgba(201, 169, 110, 0.14),
+    transparent 55%
+  ),
+    rgba(255, 255, 255, 0.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 6px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
   color: var(--color-white);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-ghost:hover,
+  .btn-ghost:active,
+  .btn:active {
+    transform: none;
+  }
+}
+
+.btn:not(.btn-nav) {
+  min-height: 46px;
 }
 
 .btn-nav {
   padding: 9px 18px;
+  min-height: revert;
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* ── Hamburger ── */
