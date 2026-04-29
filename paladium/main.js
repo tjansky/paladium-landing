@@ -4,6 +4,7 @@
   var header = document.querySelector(".site-header");
   var menuToggle = document.querySelector(".menu-toggle");
   var navMobile = document.querySelector(".nav-mobile");
+  var navBackdrop = document.getElementById("nav-backdrop");
   var mobileLinks = navMobile ? navMobile.querySelectorAll("a") : [];
 
   function onScroll() {
@@ -18,23 +19,66 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  function setToggleLabel(expanded) {
+    if (!menuToggle) return;
+    menuToggle.setAttribute("aria-label", expanded ? "Zatvori izbornik" : "Otvori izbornik");
+  }
+
+  function closeMobileNav() {
+    if (!menuToggle || !navMobile) return;
+    menuToggle.setAttribute("aria-expanded", "false");
+    navMobile.classList.remove("is-open");
+    navMobile.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("mobile-nav-open");
+    if (navBackdrop) {
+      navBackdrop.setAttribute("aria-hidden", "true");
+    }
+    document.body.style.overflow = "";
+    setToggleLabel(false);
+  }
+
+  function openMobileNav() {
+    if (!menuToggle || !navMobile) return;
+    menuToggle.setAttribute("aria-expanded", "true");
+    navMobile.classList.add("is-open");
+    navMobile.setAttribute("aria-hidden", "false");
+    document.body.classList.add("mobile-nav-open");
+    if (navBackdrop) {
+      navBackdrop.setAttribute("aria-hidden", "false");
+    }
+    document.body.style.overflow = "hidden";
+    setToggleLabel(true);
+  }
+
   if (menuToggle && navMobile) {
     menuToggle.addEventListener("click", function () {
-      var open = menuToggle.getAttribute("aria-expanded") === "true";
-      menuToggle.setAttribute("aria-expanded", String(!open));
-      navMobile.classList.toggle("is-open", !open);
-      navMobile.setAttribute("aria-hidden", open ? "true" : "false");
-      document.body.style.overflow = !open ? "hidden" : "";
+      var expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
     });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener("click", closeMobileNav);
+    }
 
     mobileLinks.forEach(function (link) {
       link.addEventListener("click", function () {
-        menuToggle.setAttribute("aria-expanded", "false");
-        navMobile.classList.remove("is-open");
-        navMobile.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
+        closeMobileNav();
       });
     });
+
+    window.addEventListener(
+      "resize",
+      function () {
+        if (window.matchMedia("(min-width: 901px)").matches) {
+          closeMobileNav();
+        }
+      },
+      { passive: true }
+    );
   }
 
   /* Scroll reveal */
@@ -104,8 +148,13 @@
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && lightbox && lightbox.classList.contains("is-open")) {
+    if (e.key !== "Escape") return;
+    if (lightbox && lightbox.classList.contains("is-open")) {
       closeLightbox();
+      return;
+    }
+    if (navMobile && navMobile.classList.contains("is-open")) {
+      closeMobileNav();
     }
   });
 
