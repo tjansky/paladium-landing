@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Marcellus&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="paladium/styles.css" />
@@ -23,8 +23,32 @@
     <header class="site-header" role="banner">
       <div class="header-inner">
         <a class="logo" href="#top" aria-label="Paladium Keramika — početna">
-          <span class="logo-primary">Paladium</span>
-          <span class="logo-secondary">Keramika</span>
+          <svg
+            class="logo-mark"
+            width="44"
+            height="44"
+            viewBox="0 0 48 48"
+            aria-hidden="true"
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="logo-tile-gold" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#e4c892" />
+                <stop offset="45%" stop-color="#c9a96e" />
+                <stop offset="100%" stop-color="#8f7345" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="44" height="44" rx="9" ry="9" fill="none" stroke="url(#logo-tile-gold)" stroke-width="1.25" opacity="0.95" />
+            <rect x="6" y="6" width="17" height="17" rx="3" ry="3" fill="url(#logo-tile-gold)" />
+            <rect x="25" y="6" width="17" height="17" rx="3" ry="3" fill="#f2f3f6" />
+            <rect x="6" y="25" width="17" height="17" rx="3" ry="3" fill="#f2f3f6" />
+            <rect x="25" y="25" width="17" height="17" rx="3" ry="3" fill="url(#logo-tile-gold)" />
+          </svg>
+          <span class="logo-text">
+            <span class="logo-primary">Paladium</span>
+            <span class="logo-secondary">Keramika</span>
+          </span>
         </a>
         <nav class="nav-desktop" aria-label="Glavna navigacija">
           <a href="#o-nama">O nama</a>
