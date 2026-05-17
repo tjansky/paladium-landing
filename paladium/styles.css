@@ -152,59 +152,76 @@ a:hover {
 /* ── Logo ── */
 .logo {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 14px;
   text-decoration: none;
   flex-shrink: 0;
+  transition: opacity var(--transition);
 }
 
-.logo-mark {
-  display: block;
-  width: 40px;
-  height: 40px;
+.logo:hover {
+  opacity: 0.82;
+}
+
+.logo-symbol {
   flex-shrink: 0;
-  transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter var(--transition);
+  filter: drop-shadow(0 1px 6px rgba(201, 169, 110, 0.25));
+  transition: filter var(--transition);
 }
 
-.logo:hover .logo-mark {
-  transform: scale(1.04);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo:hover .logo-mark {
-    transform: none;
+@media (max-width: 900px) {
+  .logo-symbol {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .logo-text {
+    display: none !important;
   }
 }
 
-.logo:focus-visible .logo-mark {
-  transform: scale(1.04);
+.logo:hover .logo-symbol {
+  filter: drop-shadow(0 2px 12px rgba(201, 169, 110, 0.55));
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-
-.logo-primary,
-.logo-secondary {
-  font-family: var(--font-logo);
-  font-size: 1.125rem;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  line-height: 1.05;
+  gap: 4px;
 }
 
 .logo-primary {
+  font-family: var(--font-logo);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
   color: var(--color-accent);
+  line-height: 1;
 }
 
 .logo-secondary {
-  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0.8;
+}
+
+.logo-secondary::before,
+.logo-secondary::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 /* ── Desktop nav ── */
