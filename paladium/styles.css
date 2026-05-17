@@ -755,14 +755,20 @@ a:hover {
   padding-left: max(24px, calc((100vw - 1120px) / 2));
   padding-right: max(24px, calc((100vw - 1120px) / 2));
   background-image:
-    radial-gradient(ellipse 65% 55% at 2% 50%, rgba(201, 169, 110, 0.022) 0%, transparent 60%);
+    radial-gradient(ellipse 65% 55% at 2% 50%, rgba(201, 169, 110, 0.022) 0%, transparent 60%),
+    linear-gradient(rgba(201, 169, 110, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.028) 1px, transparent 1px);
+  background-size: auto, 80px 80px, 80px 80px;
 }
 
 .section--alt {
   background:
     radial-gradient(ellipse 70% 60% at 98% 48%, rgba(201, 169, 110, 0.03) 0%, transparent 60%),
     radial-gradient(ellipse 40% 30% at 10% 85%, rgba(201, 169, 110, 0.015) 0%, transparent 50%),
+    linear-gradient(rgba(201, 169, 110, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.022) 1px, transparent 1px),
     var(--color-surface);
+  background-size: auto, auto, 80px 80px, 80px 80px;
 }
 
 .section-inner {
