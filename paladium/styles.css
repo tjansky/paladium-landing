@@ -626,32 +626,33 @@ a:hover {
   inset: 0;
   z-index: 4;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.28) contrast(1.1) saturate(0.8);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 75% 85% at 8% 52%, rgba(201, 169, 110, 0.1) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 92% 12%, rgba(201, 169, 110, 0.045) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 25% at 60% 90%, rgba(201, 169, 110, 0.025) 0%, transparent 50%),
+    linear-gradient(rgba(201, 169, 110, 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.038) 1px, transparent 1px);
+  background-size: auto, auto, auto, 80px 80px, 80px 80px;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    112deg,
-    rgba(13, 15, 18, 0.97) 0%,
-    rgba(13, 15, 18, 0.65) 50%,
-    rgba(13, 15, 18, 0.3) 100%
+    108deg,
+    rgba(13, 15, 18, 0.52) 0%,
+    rgba(13, 15, 18, 0.18) 55%,
+    transparent 85%
   );
   z-index: 1;
 }
@@ -753,10 +754,15 @@ a:hover {
   padding-bottom: 112px;
   padding-left: max(24px, calc((100vw - 1120px) / 2));
   padding-right: max(24px, calc((100vw - 1120px) / 2));
+  background-image:
+    radial-gradient(ellipse 65% 55% at 2% 50%, rgba(201, 169, 110, 0.022) 0%, transparent 60%);
 }
 
 .section--alt {
-  background: var(--color-surface);
+  background:
+    radial-gradient(ellipse 70% 60% at 98% 48%, rgba(201, 169, 110, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 10% 85%, rgba(201, 169, 110, 0.015) 0%, transparent 50%),
+    var(--color-surface);
 }
 
 .section-inner {
