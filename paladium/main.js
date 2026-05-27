@@ -147,10 +147,42 @@
     });
   }
 
+  /* Privacy modal */
+  var privacyModal = document.getElementById("privacy-modal");
+  var privacyOpen = document.getElementById("privacy-open");
+  var privacyClose = document.getElementById("privacy-close");
+
+  function openPrivacyModal() {
+    if (!privacyModal) return;
+    privacyModal.classList.add("is-open");
+    privacyModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closePrivacyModal() {
+    if (!privacyModal) return;
+    privacyModal.classList.remove("is-open");
+    privacyModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  if (privacyOpen) privacyOpen.addEventListener("click", openPrivacyModal);
+  if (privacyClose) privacyClose.addEventListener("click", closePrivacyModal);
+
+  if (privacyModal) {
+    privacyModal.addEventListener("click", function (e) {
+      if (e.target === privacyModal) closePrivacyModal();
+    });
+  }
+
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     if (lightbox && lightbox.classList.contains("is-open")) {
       closeLightbox();
+      return;
+    }
+    if (privacyModal && privacyModal.classList.contains("is-open")) {
+      closePrivacyModal();
       return;
     }
     if (navMobile && navMobile.classList.contains("is-open")) {

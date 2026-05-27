@@ -9,12 +9,6 @@
       content="Paladium Keramika pruža profesionalne keramičarske radove, lijepljenje pločica, izradu kupaonica, bazena, hodnika i stubišta. Keramika postavljena s pažnjom."
     />
     <meta name="theme-color" content="#0f1114" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Marcellus&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="paladium/styles.css" />
   </head>
   <body>
@@ -457,8 +451,28 @@
       </div>
       <p class="footer-bottom">
         © <span id="year"></span> Paladium Keramika. Sva prava pridržana.
+        <button type="button" class="privacy-link" id="privacy-open">Zaštita osobnih podataka</button>
       </p>
     </footer>
+
+    <div id="privacy-modal" class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" aria-hidden="true">
+      <div class="privacy-modal-inner">
+        <button type="button" class="privacy-modal-close" id="privacy-close" aria-label="Zatvori">&times;</button>
+        <h2 id="privacy-title">Zaštita osobnih podataka</h2>
+        <p><strong>Voditelj obrade:</strong> Paladium Keramika, Hrvatska<br>
+        Kontakt: <a href="mailto:info@paladiumkeramika.hr">info@paladiumkeramika.hr</a></p>
+        <h3>Koje podatke prikupljamo</h3>
+        <p>Putem kontakt forme prikupljamo: ime i prezime, broj telefona te e-mail adresu koje dobrovoljno unosite pri slanju upita.</p>
+        <h3>Svrha obrade</h3>
+        <p>Podaci se koriste isključivo za odgovor na vaš upit i dogovaranje eventualne suradnje (pravna osnova: čl. 6(1)(b) GDPR — predugovorna radnja na zahtjev ispitanika).</p>
+        <h3>Primatelji podataka</h3>
+        <p>Podaci se prosljeđuju putem servisa Web3Forms (web3forms.com) na e-mail adresu <a href="mailto:info@paladiumkeramika.hr">info@paladiumkeramika.hr</a> i ne dijele se s trećim stranama u marketinške svrhe.</p>
+        <h3>Pohrana i brisanje</h3>
+        <p>Podaci se čuvaju onoliko dugo koliko je potrebno za odgovor na upit. Imate pravo u svakom trenutku zatražiti uvid, ispravak ili brisanje svojih podataka slanjem zahtjeva na <a href="mailto:info@paladiumkeramika.hr">info@paladiumkeramika.hr</a>.</p>
+        <h3>Kolačići</h3>
+        <p>Ova stranica ne koristi kolačiće za praćenje korisnika. Fontovi i svi resursi serviraju se s naših servera te ne postoje zahtjevi prema trećim stranama pri učitavanju stranice.</p>
+      </div>
+    </div>
 
     <div
       id="lightbox"
