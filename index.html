@@ -383,10 +383,14 @@
               <div class="form-success" role="status" aria-live="polite">
                 Hvala na upitu. Poruka je zaprimljena — javljamo se u najkraćem mogućem roku.
               </div>
-              <form id="contact-form" action="#" method="post" novalidate>
+              <form id="contact-form" novalidate>
+                <input type="hidden" name="access_key" value="ffc24fa1-7bb8-46aa-8c53-d423c19a04b4" />
+                <input type="hidden" name="subject" value="Novi upit — Paladium Keramika" />
+                <input type="hidden" name="from_name" value="Paladium Keramika — Web" />
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
                 <div class="form-row">
                   <label for="ime">Ime i prezime</label>
-                  <input id="ime" name="ime" type="text" autocomplete="name" required placeholder="Vaše ime i prezime" />
+                  <input id="ime" name="name" type="text" autocomplete="name" required placeholder="Vaše ime i prezime" />
                 </div>
                 <div class="form-row">
                   <label for="telefon">Telefon</label>
@@ -398,10 +402,10 @@
                 </div>
                 <div class="form-row">
                   <label for="poruka">Poruka</label>
-                  <textarea id="poruka" name="poruka" required placeholder="Opišite prostor, željene pločice i rokove..."></textarea>
+                  <textarea id="poruka" name="message" required placeholder="Opišite prostor, željene pločice i rokove..."></textarea>
                 </div>
                 <div class="form-actions">
-                  <button class="btn btn-primary" type="submit">Pošaljite upit</button>
+                  <button class="btn btn-primary" type="submit" id="contact-submit">Pošaljite upit</button>
                 </div>
               </form>
             </div>
