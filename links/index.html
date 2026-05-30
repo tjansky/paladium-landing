@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paladium Keramika | Kontakt i društvene mreže</title>
+    <meta
+      name="description"
+      content="Svi kontakt podaci Paladium Keramike na jednom mjestu."
+    />
+    <meta name="theme-color" content="#0d0f12" />
+    <meta name="robots" content="noindex, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Paladium Keramika | Kontakt i društvene mreže" />
+    <meta property="og:description" content="Svi kontakt podaci Paladium Keramike na jednom mjestu." />
+    <meta property="og:url" content="https://paladiumkeramika.hr/links" />
+
+    <!-- Shared design tokens & fonts -->
+    <link rel="stylesheet" href="../paladium/styles.css" />
+
+    <style>
+      /* ── Links page layout ──────────────────────────────────────────── */
+
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px 48px;
+        overflow-x: hidden;
+        background:
+          radial-gradient(ellipse 90% 55% at 50% -10%, rgba(201, 169, 110, 0.12) 0%, transparent 65%),
+          radial-gradient(ellipse 60% 40% at 10% 80%, rgba(201, 169, 110, 0.05) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 35% at 90% 70%, rgba(201, 169, 110, 0.04) 0%, transparent 55%),
+          linear-gradient(rgba(201, 169, 110, 0.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(201, 169, 110, 0.028) 1px, transparent 1px),
+          var(--color-bg);
+        background-size: auto, auto, auto, 80px 80px, 80px 80px, auto;
+      }
+
+      /* Grain texture */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.045;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 160px;
+      }
+
+      .links-container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 460px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ── Header / branding ──────────────────────────────────────────── */
+
+      .links-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 52px;
+        padding-bottom: 40px;
+        width: 100%;
+        opacity: 0;
+        animation: lk-fadeDown 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.08s;
+      }
+
+      .links-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        text-decoration: none;
+        margin-bottom: 24px;
+        transition: opacity 0.3s ease;
+      }
+
+      .links-logo:hover {
+        opacity: 0.82;
+      }
+
+      .links-logo-symbol {
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 14px rgba(201, 169, 110, 0.35));
+        transition: filter 0.35s ease;
+      }
+
+      .links-logo:hover .links-logo-symbol {
+        filter: drop-shadow(0 4px 20px rgba(201, 169, 110, 0.6));
+      }
+
+      .links-logo-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+      }
+
+      .links-logo-primary {
+        font-family: var(--font-logo);
+        font-size: 1.45rem;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        line-height: 1;
+        margin-right: -0.28em;
+      }
+
+      .links-logo-secondary {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-sans);
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        opacity: 0.75;
+      }
+
+      .links-logo-secondary::before,
+      .links-logo-secondary::after {
+        content: "";
+        display: block;
+        flex: 1;
+        height: 1px;
+        background: var(--color-accent);
+        opacity: 0.55;
+      }
+
+      /* Gold divider under logo */
+      .links-divider {
+        width: 40px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        margin: 0 auto 22px;
+        opacity: 0.55;
+      }
+
+      .links-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
+        font-weight: 600;
+        font-style: italic;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        color: var(--color-white);
+        margin: 0 0 12px;
+      }
+
+      .links-subtitle {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        font-weight: 400;
+        line-height: 1.65;
+        color: var(--color-text-muted);
+        margin: 0;
+        max-width: 30ch;
+      }
+
+      /* ── Link buttons ───────────────────────────────────────────────── */
+
+      .links-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .links-list li {
+        opacity: 0;
+        animation: lk-fadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .links-list li:nth-child(1) { animation-delay: 0.22s; }
+      .links-list li:nth-child(2) { animation-delay: 0.31s; }
+      .links-list li:nth-child(3) { animation-delay: 0.40s; }
+      .links-list li:nth-child(4) { animation-delay: 0.49s; }
+      .links-list li:nth-child(5) { animation-delay: 0.58s; }
+      .links-list li:nth-child(6) { animation-delay: 0.67s; }
+
+      .lk-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        min-height: 64px;
+        padding: 0;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: linear-gradient(
+          160deg,
+          rgba(26, 32, 41, 0.55) 0%,
+          rgba(13, 15, 18, 0.92) 50%,
+          rgba(9, 10, 13, 0.97) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          0 4px 20px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition:
+          transform 0.38s cubic-bezier(0.33, 1, 0.68, 1),
+          border-color 0.32s ease,
+          box-shadow 0.38s cubic-bezier(0.33, 1, 0.68, 1),
+          background 0.32s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Top gold accent line */
+      .lk-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--icon-color, var(--color-accent)) 0%,
+          rgba(201, 169, 110, 0.3) 60%,
+          transparent 100%
+        );
+        opacity: 0.5;
+        transition: opacity 0.32s ease;
+      }
+
+      /* Hover glow from left */
+      .lk-btn::after {
+        content: "";
+        position: absolute;
+        left: -60px;
+        top: 0;
+        bottom: 0;
+        width: 80px;
+        background: radial-gradient(
+          ellipse 100% 160% at 0% 50%,
+          var(--icon-color, var(--color-accent)) 0%,
+          transparent 75%
+        );
+        opacity: 0;
+        transition: opacity 0.38s ease;
+        pointer-events: none;
+      }
+
+      .lk-btn:hover {
+        transform: translateY(-3px);
+        border-color: rgba(201, 169, 110, 0.28);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 10px 40px rgba(0, 0, 0, 0.35),
+          0 0 0 1px rgba(201, 169, 110, 0.1);
+      }
+
+      .lk-btn:hover::before {
+        opacity: 0.9;
+      }
+
+      .lk-btn:hover::after {
+        opacity: 0.12;
+      }
+
+      .lk-btn:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .lk-btn:hover {
+          transform: none;
+        }
+        .lk-btn:active {
+          transform: none;
+        }
+      }
+
+      .lk-icon-wrap {
+        flex-shrink: 0;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--icon-color, var(--color-accent));
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        transition: color 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .lk-icon-wrap svg {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+
+      .lk-label {
+        flex: 1;
+        padding: 0 16px;
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: var(--color-text);
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+
+      .lk-btn:hover .lk-label {
+        color: var(--color-white);
+      }
+
+      .lk-arrow {
+        flex-shrink: 0;
+        width: 48px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(142, 151, 162, 0.4);
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease, transform 0.38s cubic-bezier(0.33, 1, 0.68, 1);
+      }
+
+      .lk-btn:hover .lk-arrow {
+        color: var(--icon-color, var(--color-accent));
+        transform: translateX(3px);
+      }
+
+      /* ── Icon colour tokens ─────────────────────────────────────────── */
+      .lk-btn--web      { --icon-color: #c9a96e; }
+      .lk-btn--phone    { --icon-color: #7ec4b0; }
+      .lk-btn--email    { --icon-color: #a0b8e0; }
+      .lk-btn--instagram{ --icon-color: #e8a0b8; }
+      .lk-btn--facebook { --icon-color: #7da8e0; }
+      .lk-btn--whatsapp { --icon-color: #7ec47a; }
+
+      /* ── Section separator ──────────────────────────────────────────── */
+
+      .links-section-sep {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        margin: 32px 0 24px;
+        opacity: 0;
+        animation: lk-fadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.84s;
+      }
+
+      .links-section-sep::before,
+      .links-section-sep::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+      }
+
+      .links-section-sep span {
+        font-family: var(--font-sans);
+        font-size: 0.625rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+      }
+
+      /* ── vCard section ──────────────────────────────────────────────── */
+
+      .links-vcard {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        opacity: 0;
+        animation: lk-fadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.92s;
+      }
+
+      .links-vcard-label {
+        font-family: var(--font-sans);
+        font-size: 0.8125rem;
+        color: var(--color-text-muted);
+        text-align: center;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .lk-btn--vcard {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 58px;
+        padding: 0 28px;
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: #141109;
+        background: linear-gradient(
+          165deg,
+          #e4c992 0%,
+          var(--color-accent) 38%,
+          #9f7d43 108%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -1px 0 rgba(20, 16, 8, 0.18),
+          0 4px 22px rgba(201, 169, 110, 0.28),
+          0 1px 2px rgba(0, 0, 0, 0.22);
+        transition:
+          background 0.38s cubic-bezier(0.33, 1, 0.68, 1),
+          transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+          box-shadow 0.38s cubic-bezier(0.33, 1, 0.68, 1);
+        overflow: hidden;
+      }
+
+      .lk-btn--vcard::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          165deg,
+          #f0dfb0 0%,
+          var(--color-accent-hover) 42%,
+          var(--color-accent) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.38s ease;
+      }
+
+      .lk-btn--vcard:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.35),
+          inset 0 -1px 0 rgba(20, 16, 8, 0.12),
+          0 10px 36px rgba(201, 169, 110, 0.42),
+          0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .lk-btn--vcard:hover::before {
+        opacity: 1;
+      }
+
+      .lk-btn--vcard:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+
+      .lk-btn--vcard svg,
+      .lk-btn--vcard span {
+        position: relative;
+        z-index: 1;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .lk-btn--vcard:hover { transform: none; }
+        .lk-btn--vcard:active { transform: none; }
+      }
+
+      /* ── Footer ─────────────────────────────────────────────────────── */
+
+      .links-footer {
+        margin-top: 40px;
+        text-align: center;
+        opacity: 0;
+        animation: lk-fadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.02s;
+      }
+
+      .links-footer a {
+        font-family: var(--font-sans);
+        font-size: 0.8125rem;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: color 0.3s ease;
+      }
+
+      .links-footer a:hover {
+        color: var(--color-accent);
+      }
+
+      .links-footer-copy {
+        margin-top: 8px;
+        font-size: 0.71875rem;
+        color: rgba(142, 151, 162, 0.45);
+        letter-spacing: 0.03em;
+      }
+
+      /* ── Keyframes ──────────────────────────────────────────────────── */
+
+      @keyframes lk-fadeDown {
+        from { opacity: 0; transform: translateY(-16px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes lk-fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="links-container">
+
+      <!-- Branding -->
+      <header class="links-header">
+        <a class="links-logo" href="https://paladiumkeramika.hr" aria-label="Paladium Keramika — web stranica">
+          <svg
+            class="links-logo-symbol"
+            width="52"
+            height="52"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="lk-gold" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#f5e080"/>
+                <stop offset="40%"  stop-color="#c9a96e"/>
+                <stop offset="100%" stop-color="#6e420e"/>
+              </linearGradient>
+            </defs>
+            <polygon points="24,2  34,12 24,22 14,12" fill="url(#lk-gold)"/>
+            <polygon points="26,24 36,14 46,24 36,34" fill="url(#lk-gold)"/>
+            <polygon points="24,26 34,36 24,46 14,36" fill="url(#lk-gold)"/>
+            <polygon points="2,24  12,14 22,24 12,34" fill="url(#lk-gold)"/>
+          </svg>
+          <span class="links-logo-text">
+            <span class="links-logo-primary">Paladium</span>
+            <span class="links-logo-secondary">Keramika</span>
+          </span>
+        </a>
+
+        <div class="links-divider" aria-hidden="true"></div>
+
+        <h1 class="links-title">Paladium Keramika</h1>
+        <p class="links-subtitle">Keramika, kupaonice i kompletna rješenja za uređenje prostora.</p>
+      </header>
+
+      <!-- Link buttons -->
+      <nav aria-label="Kontakt i društvene mreže">
+        <ul class="links-list">
+
+          <li>
+            <a class="lk-btn lk-btn--web" href="https://paladiumkeramika.hr" target="_blank" rel="noopener">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </span>
+              <span class="lk-label">Web stranica</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a class="lk-btn lk-btn--instagram" href="https://www.instagram.com/paladiumkeramika" target="_blank" rel="noopener noreferrer">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </span>
+              <span class="lk-label">Instagram</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a class="lk-btn lk-btn--facebook" href="https://www.facebook.com/profile.php?id=61590255758374" target="_blank" rel="noopener noreferrer">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </span>
+              <span class="lk-label">Facebook</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a class="lk-btn lk-btn--phone" href="tel:+385953632126">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16z"/>
+                </svg>
+              </span>
+              <span class="lk-label">Nazovi nas</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a class="lk-btn lk-btn--email" href="mailto:info@paladiumkeramika.hr">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <span class="lk-label">Pošaljite email</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a class="lk-btn lk-btn--whatsapp" href="https://wa.me/385953632126" target="_blank" rel="noopener noreferrer">
+              <span class="lk-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </span>
+              <span class="lk-label">WhatsApp</span>
+              <span class="lk-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- vCard download -->
+      <div class="links-section-sep" aria-hidden="true">
+        <span>Spremi kontakt</span>
+      </div>
+
+      <div class="links-vcard">
+        <p class="links-vcard-label">
+          Dodajte Paladium Keramiku u imenik s jednim klikom.
+        </p>
+        <a
+          class="lk-btn--vcard"
+          href="../paladium/paladium-keramika.vcf"
+          download="Paladium-Keramika.vcf"
+          aria-label="Preuzmi kontakt karticu"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Preuzmi kontakt</span>
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="links-footer">
+        <a href="https://paladiumkeramika.hr">paladiumkeramika.hr</a>
+        <p class="links-footer-copy">
+          © <span id="lk-year"></span> Paladium Keramika
+        </p>
+      </footer>
+
+    </div>
+
+    <script>
+      document.getElementById("lk-year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
