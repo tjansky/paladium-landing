@@ -147,98 +147,14 @@
     });
   }
 
-  /* Privacy modal */
-  var privacyModal = document.getElementById("privacy-modal");
-  var privacyOpen = document.getElementById("privacy-open");
-  var privacyClose = document.getElementById("privacy-close");
-
-  function openPrivacyModal() {
-    if (!privacyModal) return;
-    privacyModal.classList.add("is-open");
-    privacyModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closePrivacyModal() {
-    if (!privacyModal) return;
-    privacyModal.classList.remove("is-open");
-    privacyModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-
-  if (privacyOpen) privacyOpen.addEventListener("click", openPrivacyModal);
-  if (privacyClose) privacyClose.addEventListener("click", closePrivacyModal);
-
-  if (privacyModal) {
-    privacyModal.addEventListener("click", function (e) {
-      if (e.target === privacyModal) closePrivacyModal();
-    });
-  }
-
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     if (lightbox && lightbox.classList.contains("is-open")) {
       closeLightbox();
       return;
     }
-    if (privacyModal && privacyModal.classList.contains("is-open")) {
-      closePrivacyModal();
-      return;
-    }
     if (navMobile && navMobile.classList.contains("is-open")) {
       closeMobileNav();
     }
   });
-
-  /* Contact form — Web3Forms */
-  var form = document.getElementById("contact-form");
-  var formSuccess = document.querySelector(".form-success");
-  var submitBtn = document.getElementById("contact-submit");
-
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      var data = new FormData(form);
-      var json = Object.fromEntries(data.entries());
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Šalje se…";
-      }
-
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(json),
-      })
-        .then(function (res) {
-          return res.json().then(function (body) {
-            return { ok: res.ok, body: body };
-          });
-        })
-        .then(function (result) {
-          if (result.ok && result.body.success) {
-            if (formSuccess) {
-              formSuccess.classList.add("is-visible");
-              setTimeout(function () {
-                formSuccess.classList.remove("is-visible");
-              }, 8000);
-            }
-            form.reset();
-          } else {
-            alert("Greška pri slanju poruke. Molimo pokušajte ponovo ili nas nazovite.");
-          }
-        })
-        .catch(function () {
-          alert("Greška pri slanju poruke. Provjerite vezu i pokušajte ponovo.");
-        })
-        .finally(function () {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Pošaljite upit";
-          }
-        });
-    });
-  }
 })();

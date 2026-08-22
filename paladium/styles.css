@@ -1634,26 +1634,11 @@ a:hover {
 /* ─── Contact ───────────────────────────────────── */
 
 .contact-layout {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(28px, 4vw, 56px);
-  align-items: start;
-}
-
-.contact-form {
-  order: -1;
-}
-
-@media (max-width: 900px) {
-  .contact-layout {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .contact-info {
-  position: sticky;
-  top: calc(var(--header-h) + 28px);
   padding: 32px 30px 36px;
   border-radius: var(--radius-lg);
   background: linear-gradient(
@@ -1758,145 +1743,6 @@ a:hover {
 
 .contact-list span {
   color: var(--color-text);
-}
-
-.contact-form {
-  position: relative;
-  padding: 36px;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(
-    170deg,
-    rgba(36, 44, 58, 0.35) 0%,
-    rgba(17, 20, 26, 0.98) 45%,
-    rgba(11, 13, 17, 1) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-    0 12px 48px rgba(0, 0, 0, 0.35);
-}
-
-.contact-form::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--color-accent) 0%,
-    rgba(201, 169, 110, 0.4) 48%,
-    transparent 94%
-  );
-  opacity: 0.82;
-}
-
-.contact-form > * {
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 540px) {
-  .contact-form {
-    padding: 26px 20px 30px;
-  }
-
-  .contact-info {
-    padding: 26px 22px 30px;
-  }
-}
-
-.form-row {
-  margin-bottom: 22px;
-}
-
-.form-row:last-of-type {
-  margin-bottom: 0;
-}
-
-.form-row label {
-  display: block;
-  margin-bottom: 9px;
-  font-size: 0.734375rem;
-  font-weight: 600;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: rgba(148, 158, 170, 0.95);
-}
-
-.form-row input,
-.form-row textarea {
-  width: 100%;
-  padding: 15px 16px;
-  font-family: inherit;
-  font-size: 1rem;
-  color: var(--color-text);
-  background: rgba(8, 9, 12, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
-  transition: border-color var(--transition), box-shadow var(--transition), background 0.3s ease;
-}
-
-.form-row input::placeholder,
-.form-row textarea::placeholder {
-  color: rgba(142, 151, 162, 0.45);
-}
-
-.form-row input:hover,
-.form-row textarea:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(10, 12, 16, 0.75);
-}
-
-.form-row input:focus,
-.form-row textarea:focus {
-  outline: none;
-  border-color: rgba(201, 169, 110, 0.45);
-  box-shadow:
-    0 0 0 3px var(--color-accent-soft),
-    0 0 0 1px rgba(201, 169, 110, 0.15);
-  background: rgba(12, 14, 18, 0.9);
-}
-
-.form-row textarea {
-  min-height: 148px;
-  resize: vertical;
-}
-
-.form-actions .btn {
-  width: 100%;
-  padding: 16px;
-  margin-top: 6px;
-  font-size: 0.984375rem;
-}
-
-.form-note {
-  margin: 18px 0 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.78125rem;
-  line-height: 1.6;
-  color: rgba(142, 151, 162, 0.78);
-  text-align: center;
-}
-
-.form-success {
-  display: none;
-  margin-bottom: 22px;
-  padding: 18px 20px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(201, 169, 110, 0.35);
-  background: rgba(201, 169, 110, 0.08);
-  color: rgba(236, 238, 242, 0.95);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-.form-success.is-visible {
-  display: block;
 }
 
 #kontakt .section-header {
@@ -2026,101 +1872,141 @@ a:hover {
   gap: 0.5rem 1.25rem;
 }
 
-.privacy-link {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
+.footer-legal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+}
+
+.footer-legal a {
   font-size: 0.8125rem;
   color: var(--color-accent);
-  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color var(--transition);
 }
 
-.privacy-link:hover {
+.footer-legal a:hover {
   color: var(--color-accent-hover);
 }
 
-/* Privacy modal */
-.privacy-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+/* ─── Legal pages (impressum, privatnost, prigovori) ── */
+
+.legal-page {
+  padding: calc(var(--header-h) + 64px) 24px 96px;
 }
 
-.privacy-modal.is-open {
-  opacity: 1;
-  pointer-events: auto;
+.legal-page .legal-inner {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.privacy-modal-inner {
-  position: relative;
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem 2rem;
-  max-width: 640px;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: var(--shadow-soft);
-}
-
-.privacy-modal-inner h2 {
+.legal-page h1 {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 600;
-  color: var(--color-accent);
-  margin-bottom: 1.25rem;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
 }
 
-.privacy-modal-inner h3 {
+.legal-page .legal-updated {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.legal-page h2 {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-text);
-  margin: 1.5rem 0 0.5rem;
+  color: var(--color-accent);
+  margin: 2.25rem 0 0.75rem;
 }
 
-.privacy-modal-inner p {
+.legal-page p,
+.legal-page li {
   font-size: 0.9375rem;
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-.privacy-modal-inner a {
+.legal-page p + p {
+  margin-top: 0.75rem;
+}
+
+.legal-page ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.legal-page li + li {
+  margin-top: 0.35rem;
+}
+
+.legal-page a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.privacy-modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: color var(--transition);
+.legal-page a:hover {
+  color: var(--color-accent-hover);
 }
 
-.privacy-modal-close:hover {
+.legal-page dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.5rem;
+  margin: 1rem 0 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(26, 32, 41, 0.35);
+}
+
+.legal-page dt {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.legal-page dd {
+  font-size: 0.9375rem;
   color: var(--color-text);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .legal-page dl {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .legal-page dt {
+    margin-top: 0.75rem;
+  }
+  .legal-page dt:first-child {
+    margin-top: 0;
+  }
+}
+
+.legal-page .legal-back {
+  display: inline-block;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+.site-footer--compact {
+  padding: 32px 24px 36px;
+}
+
+.site-footer--compact .footer-bottom {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
